@@ -10,7 +10,7 @@ public class Orcamento {
 		this.valor = valor;
 	}
 
-	public BigDecimal gerValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
