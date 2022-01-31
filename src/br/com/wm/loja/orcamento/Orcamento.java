@@ -1,6 +1,8 @@
 package br.com.wm.loja.orcamento;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.wm.loja.orcamento.situacao.EmAnalise;
 import br.com.wm.loja.orcamento.situacao.Finalizado;
@@ -9,13 +11,13 @@ import br.com.wm.loja.orcamento.situacao.SituacaoOrcamento;
 public class Orcamento {
 	
 	private BigDecimal valor;
-	private int quantidadeItens;
 	private SituacaoOrcamento situacao; //State
-	
-	public Orcamento(BigDecimal valor, int quantidadeItens) {
-		this.valor = valor;
-		this.quantidadeItens = quantidadeItens;
+	private List<ItemOrcamento> itens;
+ 	
+	public Orcamento() {
+		this.valor = BigDecimal.ZERO;
 		this.situacao = new EmAnalise();
+		this.itens = new ArrayList<>();
 	}
 	
 	//State
@@ -45,7 +47,7 @@ public class Orcamento {
 	}
 
 	public int getQuantidadeItens() {
-		return quantidadeItens;
+		return itens.size();
 	}
 
 	public SituacaoOrcamento getSituacao() {
@@ -58,6 +60,11 @@ public class Orcamento {
 
 	public boolean isFinalizado() {
 		return situacao instanceof Finalizado;
+	}
+	
+	public void adicionarItem(ItemOrcamento item) {
+		this.valor = valor.add(item.getValor());
+		this.itens.add(item);
 	}
 
 }
