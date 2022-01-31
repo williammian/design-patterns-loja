@@ -17,7 +17,7 @@ public class GeraPedidoHandler {
 		this.acoes = acoes;
 	}
 
-	public void execute(GeraPedido dados) {
+	public void executar(GeraPedido dados) {
 		Orcamento orcamento = new Orcamento();
 		orcamento.adicionarItem(new ItemOrcamento(new BigDecimal("200")));
 		
